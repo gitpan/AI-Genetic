@@ -4,3 +4,7 @@ Revision history for Perl extension AI::Genetic.
 	- original version; created by h2xs 1.21 with options
 		-AX -n AI::Genetic
 
+0.02  Fri Apr 16 14:15:17 2004
+	- Packaged v0.02 for CPAN.
+	- This is a complete re-write from scratch.
+
