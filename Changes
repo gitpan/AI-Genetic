@@ -8,3 +8,9 @@ Revision history for Perl extension AI::Genetic.
 	- Packaged v0.02 for CPAN.
 	- This is a complete re-write from scratch.
 
+0.03  Thu Mar  3 16:13:35 2005
+	- Fixed bug where range vector genes were not always
+	  integers.
+	- Implemented a work-around to a sort bug in Perl. The
+	  bug is discussed here:
+	  http://rt.perl.org/rt3/Ticket/Display.html?id=7063

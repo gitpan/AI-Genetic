@@ -6,7 +6,7 @@ use Carp;
 
 use vars qw/$VERSION/;
 
-$VERSION = 0.02;
+$VERSION = 0.03;
 
 use AI::Genetic::Defaults;
 
@@ -150,6 +150,12 @@ sub evolve {
 
 sub sortIndividuals {
   my ($self, $list) = @_;
+
+  # make sure all score's are calculated.
+  # This is to avoid a bug in Perl where a sort is called from whithin another
+  # sort, and they are in different packages, then you get a use of uninit value
+  # warning. See http://rt.perl.org/rt3/Ticket/Display.html?id=7063
+  $_->score for @$list;
 
   return [sort {$b->score <=> $a->score} @$list];
 }
@@ -727,11 +733,12 @@ or just stick it somewhere in @INC where perl can find it. It is in pure Perl.
 Written by Ala Qumsieh I<aqumsieh@cpan.org>.
 
 Special thanks go to John D. Porter and Oliver Smith for stimulating
-discussions and great suggestions.
+discussions and great suggestions. Daniel Martin and Ivan Tubert-Brohman
+uncovered various bugs and for this I'm grateful.
 
 =head1 COPYRIGHTS
 
-(c) 2003,2004 Ala Qumsieh. All rights reserved.
+(c) 2003-2005 Ala Qumsieh. All rights reserved.
 This module is distributed under the same terms as Perl itself.
 
 =cut

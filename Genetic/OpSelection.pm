@@ -95,7 +95,9 @@ sub tournament {
     $s{$i} = 1;
   }
 
-  return (sort {$b->score <=> $a->score} map $pop->[$_], keys %s)[0];
+  return (sort {$b->score <=> $a->score}
+	  map {$_->score; $_}  # This avoids a bug in Perl. See Genetic.pm.
+	  map $pop->[$_], keys %s)[0];
 }
 
 # sub random():
@@ -129,7 +131,9 @@ sub topN {
   $N ||= 1;
 
   # hmm .. are inputs already sorted?
-  return [(sort {$b->score <=> $a->score} @$pop)[0 .. $N-1]];
+  return [(sort {$b->score <=> $a->score}
+	   map {$_->score; $_}  # This avoids a bug in Perl. See Genetic.pm.
+	   @$pop)[0 .. $N-1]];
 }
 
 1;

@@ -43,7 +43,7 @@ sub rangeVector {
 
     # now randomly choose another value from the range.
     my $abs = $ranges->[$i][1] - $ranges->[$i][0];
-    $g = $ranges->[$i][0] + rand($abs);
+    $g = $ranges->[$i][0] + int rand($abs);
   }
 
   return $genes;

@@ -361,9 +361,10 @@ AUTHOR & CREDITS
     Written by Ala Qumsieh *aqumsieh@cpan.org*.
 
     Special thanks go to John D. Porter and Oliver Smith for stimulating
-    discussions and great suggestions.
+    discussions and great suggestions. Daniel Martin and Ivan Tubert-Brohman
+    uncovered various bugs and for this I'm grateful.
 
 COPYRIGHTS
-    (c) 2003,2004 Ala Qumsieh. All rights reserved. This module is
+    (c) 2003-2005 Ala Qumsieh. All rights reserved. This module is
     distributed under the same terms as Perl itself.
 

@@ -18,7 +18,7 @@ sub newRandom {
 		   } => $class;
 
   for my $r (@$ranges) {
-    my $rand = $r->[0] + rand($r->[1] - $r->[0]);
+    my $rand = $r->[0] + int rand($r->[1] - $r->[0]);
     push @{$self->{GENES}} => $rand;
   }
 
