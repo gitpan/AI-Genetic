@@ -14,3 +14,8 @@ Revision history for Perl extension AI::Genetic.
 	- Implemented a work-around to a sort bug in Perl. The
 	  bug is discussed here:
 	  http://rt.perl.org/rt3/Ticket/Display.html?id=7063
+
+0.04  Mon Jul 18 16:51:47 PDT 2005
+	- Fixed bugs reported by crenz@web42.com regarding
+	  rangevectors. Turns out that the last element
+	  in the range was never reached. Fixed.

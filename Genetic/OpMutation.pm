@@ -42,7 +42,7 @@ sub rangeVector {
     next if rand > $prob;
 
     # now randomly choose another value from the range.
-    my $abs = $ranges->[$i][1] - $ranges->[$i][0];
+    my $abs = $ranges->[$i][1] - $ranges->[$i][0] + 1;
     $g = $ranges->[$i][0] + int rand($abs);
   }
 
