@@ -67,9 +67,14 @@ sub listVector {
 
     # now randomly choose another value from the lists.
     my $new;
-    do {
-      $new = $lists->[$i][rand @{$lists->[$i]}];
-    } while $new eq $g;
+
+    if (@{$lists->[$i]} == 1) {
+      $new = $lists->[$i][0];
+    } else {
+      do {
+	$new = $lists->[$i][rand @{$lists->[$i]}];
+      } while $new eq $g;
+    }
 
     $g = $new;
   }

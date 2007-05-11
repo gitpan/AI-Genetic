@@ -6,7 +6,7 @@ use Carp;
 
 use vars qw/$VERSION/;
 
-$VERSION = 0.04;
+$VERSION = 0.05;
 
 use AI::Genetic::Defaults;
 
@@ -311,16 +311,35 @@ AI::Genetic - A pure Perl genetic algorithm implementation.
 
     use AI::Genetic;
     my $ga = new AI::Genetic(
-        -fitness    => sub { rand },
+        -fitness    => \&fitnessFunc,
         -type       => 'bitvector',
         -population => 500,
         -crossover  => 0.9,
         -mutation   => 0.01,
-	-terminate  => sub { rand > 0.5 },
+	-terminate  => \&terminateFunc,
        );
+
      $ga->init(10);
      $ga->evolve('rouletteTwoPoint', 100);
      print "Best score = ", $ga->getFittest->score, ".\n";
+
+     sub fitnessFunc {
+         my $genes = shift;
+
+         my $fitness;
+         # assign a number to $fitness based on the @$genes
+         # ...
+
+         return $fitness;
+      }
+
+      sub terminateFunc {
+         my $ga = shift;
+
+         # terminate if reached some threshold.
+         return 1 if $ga->getFittest->score > $THRESHOLD;
+         return 0;
+      }
 
 =head1 DESCRIPTION
 

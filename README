@@ -4,16 +4,35 @@ NAME
 SYNOPSIS
         use AI::Genetic;
         my $ga = new AI::Genetic(
-            -fitness    => sub { rand },
+            -fitness    => \&fitnessFunc,
             -type       => 'bitvector',
             -population => 500,
             -crossover  => 0.9,
             -mutation   => 0.01,
-            -terminate  => sub { rand > 0.5 },
+            -terminate  => \&terminateFunc,
            );
+
          $ga->init(10);
          $ga->evolve('rouletteTwoPoint', 100);
          print "Best score = ", $ga->getFittest->score, ".\n";
+
+         sub fitnessFunc {
+             my $genes = shift;
+
+             my $fitness;
+             # assign a number to $fitness based on the @$genes
+             # ...
+
+             return $fitness;
+          }
+
+          sub terminateFunc {
+             my $ga = shift;
+
+             # terminate if reached some threshold.
+             return 1 if $ga->getFittest->score > $THRESHOLD;
+             return 0;
+          }
 
 DESCRIPTION
     This module implements a Genetic Algorithm (GA) in pure Perl. Other Perl

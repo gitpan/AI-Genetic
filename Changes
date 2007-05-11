@@ -19,3 +19,11 @@ Revision history for Perl extension AI::Genetic.
 	- Fixed bugs reported by crenz@web42.com regarding
 	  rangevectors. Turns out that the last element
 	  in the range was never reached. Fixed.
+
+0.05  Fri May 11 10:46:09 PDT 2007
+	- Fixed bug reported by yraber@mailup.net regarding
+	  listvectors. If a single option is given for a
+	  listvector genome, then mutation would run in an
+	  infinite loop. Fixed.
+	- updated docs a bit to better show how to specify
+	  the fitness and termination functions.
